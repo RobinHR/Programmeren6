@@ -15,10 +15,10 @@ NoteSchema.virtual('_links').get(
     function () {
         return {
             self: {
-                href: `${process.env.BASE_URI}notes/${this._id}`
+                href: `${process.env.BASE_URI}${this._id}`
             },
             collection: {
-                href: `${process.env.BASE_URI}notes/`
+                href: `${process.env.BASE_URI}`
             }
         }
     }

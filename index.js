@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require('body-parser')
 
 require('dotenv').config()
 
@@ -18,9 +19,13 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 const app = express();
 
+app.use(bodyParser.urlencoded({extended: false}))
+
+app.use(bodyParser.json())
+
 const notesRouter = require("./routers/notesRouter");
 
-app.use("", notesRouter);
+app.use("/", notesRouter);
 
 
 app.listen(8000);
